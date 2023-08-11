@@ -55,4 +55,13 @@ def get_currency_rate(currency_code):
             return jsonify(cr)
     return jsonify({"message": "Currency not found"}), 404
 
+@app.route('/transactions', methods=['GET'])
+def get_all_transactions():
+    return jsonify(transactions)
+
+@app.route('/transactions/<string:currency_code>', methods=['GET'])
+def get_transactions_by_currency(currency_code):
+    filtered_transactions = [t for t in transactions if t['currency'] == currency_code]
+    return jsonify(filtered_transactions)
+
 app.run(host='0.0.0.0')
