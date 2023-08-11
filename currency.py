@@ -44,8 +44,9 @@ converted_amount = convert_currency(amount_to_convert, source_currency, target_c
 print(f"{amount_to_convert} {source_currency} is equal to {converted_amount} {target_currency}") 
 """
 
-@app.route('/currency-rates', methods=['GET']) 
-def get_all_currency_rates(): 
+# Endpoints
+@app.route('/currency_rates', methods=['GET'])
+def get_currency_rates():
     return jsonify(currency_rates)
 
 @app.route('/currency_rates/<string:currency_code>', methods=['GET'])
