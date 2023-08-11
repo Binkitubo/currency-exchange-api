@@ -18,4 +18,8 @@ transactions = [
     {"sku": "B2009", "amount": "21.23", "currency": "USD"}
 ]
 
+@app.route('/currency-rates', methods=['GET']) 
+def get_all_currency_rates(): 
+    return jsonify(currency_rates)
+
 app.run(host='0.0.0.0')
