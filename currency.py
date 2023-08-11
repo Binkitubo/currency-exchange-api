@@ -64,4 +64,10 @@ def get_transactions_by_currency(currency_code):
     filtered_transactions = [t for t in transactions if t['currency'] == currency_code]
     return jsonify(filtered_transactions)
 
-app.run(host='0.0.0.0')
+@app.route('/transactions/<string:sku>/<string:currency_code>', methods=['GET'])
+def get_transactions_by_sku_and_currency(sku, currency_code):
+    filtered_transactions = [t for t in transactions if t['sku'] == sku and t['currency'] == currency_code]
+    return jsonify(filtered_transactions)
+
+if __name__ == '__main__':
+    app.run(debug=True)
