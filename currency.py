@@ -31,6 +31,19 @@ def convert_currency(amount, from_currency, to_currency):
     
     return round(float(amount) * rate, 2)
 
+""" 
+# Currency conversion test
+amount_to_convert = 150.00
+source_currency = 'USD'
+target_currency = 'EUR'
+
+# Call the convert_currency function
+converted_amount = convert_currency(amount_to_convert, source_currency, target_currency)
+
+# Print the result
+print(f"{amount_to_convert} {source_currency} is equal to {converted_amount} {target_currency}") 
+"""
+
 @app.route('/currency-rates', methods=['GET']) 
 def get_all_currency_rates(): 
     return jsonify(currency_rates)
