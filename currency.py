@@ -48,4 +48,11 @@ print(f"{amount_to_convert} {source_currency} is equal to {converted_amount} {ta
 def get_all_currency_rates(): 
     return jsonify(currency_rates)
 
+@app.route('/currency_rates/<string:currency_code>', methods=['GET'])
+def get_currency_rate(currency_code):
+    for cr in currency_rates:
+        if cr['from'] == currency_code or cr['to'] == currency_code:
+            return jsonify(cr)
+    return jsonify({"message": "Currency not found"}), 404
+
 app.run(host='0.0.0.0')
